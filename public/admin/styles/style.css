@@ -1,0 +1,13 @@
+body {
+  background: #fff;
+}
+
+h4 {
+	text-align: center;
+}
+
+.logout {
+	display:inline;
+	text-align: center;
+	margin-left:30%;
+}

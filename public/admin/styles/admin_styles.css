@@ -1,0 +1,123 @@
+
+html {
+    font-size: 10px;
+}
+
+@media (min-width: 576px) {
+	html {
+	    font-size: 14px;
+	}
+}
+
+@media (min-width: 800px) {
+	html {
+	    font-size: 16px;
+	}
+}
+
+#logoutbtn {
+	margin-left:20px;
+}
+
+.field {
+	margin-top:10px;
+}
+
+.grbtn {
+	background-color: white;
+	margin-top: 10 px;
+	padding-top: 0.5rem;
+	margin-left:0px;
+	border-radius: 3px;
+}
+
+.btnup {
+	line-height:0px;
+}
+
+.btndown {
+	line-height:0px;
+
+}
+
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 15px solid green;
+	margin-right: 2px;
+}
+
+.triangle-down {
+	margin-top: 2px;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 15px solid green;
+	margin-right: 2px;
+}
+
+.trhoverdown:hover {
+	border-top: 15px solid red;
+}
+
+.trhoverup:hover {
+	border-bottom: 15px solid red;
+}
+
+
+#createeventbtn {
+	margin-top: 2px;
+	margin-left:20px;
+}
+
+#Event {
+	margin-top:15px;
+}
+
+#Editname {
+	margin-left: 5rem;
+}
+
+#Deletebtn {
+	margin-left:2rem;
+}
+
+.sectionclass {
+	border: 1px solid black;
+	padding-left: 20px;
+	padding-bottom: 0.5rem;
+	border-radius: 3px;
+	/*width:500px;*/
+}
+
+#AddNewClient {
+	margin-left:150px; 
+	margin-top: 5px;
+}
+
+
+/*.items-list .list-item > div {
+	padding: 0;
+}*/
+
+.items-list .list-item {
+	height:3rem;
+}
+
+.items-list .itmbtn {
+	margin-top: 10px;
+}
+
+.items-list .item-number {
+	text-align: center;
+	line-height: 5 rem;
+	padding-top:0.7rem;
+}
+
+/*#Eventtext {
+	max-width:30%; ;
+	margin:0px;
+}*/
