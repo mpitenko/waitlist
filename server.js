@@ -43,6 +43,12 @@ router.get('/admin/DeleteEvent/:num', isAuthenticated, controllers.DeleteEvent);
 router.get('/admin/AddClient/:name/:num', isAuthenticated, controllers.AddNewClient);
 
 router.get('/waitlist', controllers.waitlistPage);
+router.get('/waitlist/getwaitlist/:eventid', controllers.GetWaitlist);
+router.get('/waitlist/getidlist', controllers.GetIDlist);
+router.get('/waitlist/getleftid/:id', controllers.GetLeftID);
+router.get('/waitlist/getrightid/:id', controllers.GetRightID);
+router.get('/waitlist/geteventnamebyid/:id', controllers.Geteventnamebyid);
+
 
 /*
  * End Routes

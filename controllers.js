@@ -143,7 +143,67 @@ module.exports = function(db) {
         waitlistPage: function(req, res) {
             res.sendFile('./public/client/templates/index.html', { root: __dirname });
         },
+
+        GetWaitlist: function(req,res) {
+            var SQL_text = "Select p.*, e.event from Persons p, Event e where p.Event_id = e.id and e.id ="+ req.params.eventid + " order by p.ordr asc";
+
+            db.query(SQL_text).then(function(myTableRows) {
+               var results = myTableRows[0];
+                res.status(200);
+                res.send({result: results});
+            });
+
+        },
+
+        GetIDlist: function(req,res) {
+            var SQL_text = "Select id from Event order by id";
+
+            db.query(SQL_text).then(function(myTableRows) {
+               var results = myTableRows[0];
+                res.status(200);
+                res.send({result: results});
+            });
+        },
+
+        GetLeftID: function(req,res) {
+
+            var SQL_text = "Select GetLeftID(" + req.params.id + ")"; 
+
+            db.query(SQL_text).then(function(myTableRows) {
+               var results = myTableRows[0];
+                res.status(200);
+                res.send({result: results[0]});
+            });
+        },
+
+        GetRightID: function(req,res) {
+
+            var SQL_text = "Select GetRightID(" + req.params.id + ")"; 
+
+            db.query(SQL_text).then(function(myTableRows) {
+               var results = myTableRows[0];
+                res.status(200);
+                res.send({result: results[0]});
+            });
+        },
+
+        Geteventnamebyid: function(req,res) {
+
+            var SQL_text = "Select Geteventnamebyid(" + req.params.id + ")"; 
+
+            db.query(SQL_text).then(function(myTableRows) {
+               var results = myTableRows[0];
+                res.status(200);
+                res.send({result: results[0]});
+            });
+        }
+
+
+
+
+
     };
+
 
     return controllers;
 };
