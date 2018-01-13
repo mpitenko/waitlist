@@ -22,3 +22,8 @@ npm start
 
 
 Test
+
+git add -u
+git add .
+git commit -m "Message"
+git push origin master

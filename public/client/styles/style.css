@@ -49,3 +49,12 @@ body {
 #EventName {
 	text-align: center;
 }
+
+.list2 {
+	float:right;
+	margin-right: 4rem;
+}
+
+.list2Item:hover {
+    background-color: #9494BB;
+}

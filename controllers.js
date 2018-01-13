@@ -144,7 +144,7 @@ module.exports = function(db) {
             res.sendFile('./public/client/templates/index.html', { root: __dirname });
         },
 
-        GetWaitlist: function(req,res) {
+        getWaitlist: function(req,res) {
             var SQL_text = "Select p.*, e.event from Persons p, Event e where p.Event_id = e.id and e.id ="+ req.params.eventid + " order by p.ordr asc";
 
             db.query(SQL_text).then(function(myTableRows) {
@@ -155,7 +155,7 @@ module.exports = function(db) {
 
         },
 
-        GetIDlist: function(req,res) {
+        getIdList: function(req,res) {
             var SQL_text = "Select id from Event order by id";
 
             db.query(SQL_text).then(function(myTableRows) {
@@ -165,7 +165,7 @@ module.exports = function(db) {
             });
         },
 
-        GetLeftID: function(req,res) {
+        getPreviousId: function(req,res) {
 
             var SQL_text = "Select GetLeftID(" + req.params.id + ")"; 
 
@@ -176,7 +176,7 @@ module.exports = function(db) {
             });
         },
 
-        GetRightID: function(req,res) {
+        getNextId: function(req,res) {
 
             var SQL_text = "Select GetRightID(" + req.params.id + ")"; 
 
@@ -187,7 +187,7 @@ module.exports = function(db) {
             });
         },
 
-        Geteventnamebyid: function(req,res) {
+        getEventNameById: function(req,res) {
 
             var SQL_text = "Select Geteventnamebyid(" + req.params.id + ")"; 
 
@@ -195,6 +195,18 @@ module.exports = function(db) {
                var results = myTableRows[0];
                 res.status(200);
                 res.send({result: results[0]});
+            });
+        }
+
+        getEventNames: function(req,res) {
+
+            var SQL_text = "Select id, Event from Event order by id"; 
+
+             db.query(SQL_text).then(function(myTableRows) {
+               var results = myTableRows[0];
+               console.log(results);
+                res.status(200);
+                res.send({result: results});
             });
         }
 

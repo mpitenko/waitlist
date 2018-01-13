@@ -43,12 +43,12 @@ router.get('/admin/DeleteEvent/:num', isAuthenticated, controllers.DeleteEvent);
 router.get('/admin/AddClient/:name/:num', isAuthenticated, controllers.AddNewClient);
 
 router.get('/waitlist', controllers.waitlistPage);
-router.get('/waitlist/getwaitlist/:eventid', controllers.GetWaitlist);
-router.get('/waitlist/getidlist', controllers.GetIDlist);
-router.get('/waitlist/getleftid/:id', controllers.GetLeftID);
-router.get('/waitlist/getrightid/:id', controllers.GetRightID);
-router.get('/waitlist/geteventnamebyid/:id', controllers.Geteventnamebyid);
-
+router.get('/waitlist/getWaitlist/:eventid', controllers.getWaitlist) ; 
+router.get('/waitlist/getIdList', controllers.getIdList); 
+router.get('/waitlist/getPreviousId/:id', controllers.getPreviousId);
+router.get('/waitlist/getNextId/:id', controllers.getNextId);
+router.get('/waitlist/getEventNameById/:id', controllers.getEventNameById);
+router.get('/waitlist/getEventNames', controllers.getEventNames);
 
 /*
  * End Routes
@@ -71,7 +71,7 @@ var app = express();
 // set public directory
 app.use(express.static('./public'));
 
-app.use(cookieParser())
+app.use(cookieParser());
 
 // connect request body parser to parse data from POST requests
 app.use(bodyParser.json()); // to support JSON-encoded bodies
