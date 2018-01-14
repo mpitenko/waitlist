@@ -22,7 +22,27 @@ function InsertChoiseElements() {
         method: 'GET',
         success: function(data) {
             var results = data.result;
-            console.log(results);
+            /*console.log('results:');
+            console.log(results);*/
+
+            for (var key in results) {
+                var el = results[key];
+                console.log('results:');
+                console.log(el.id);
+                console.log(el.Event);
+                
+                var newLi1 = document.createElement("li");
+                newLi1.classList.add("list2Item");
+                /*newLi1.innerHTML = el.Event;*/
+                var newA1 = document.createElement("a");
+                newA1.setAttribute('href', 'http://localhost:8080/waitlist/'+el.id);
+                newA1.innerHTML = el.Event;;
+                /*newA1.setAttribute('href', 'http://localhost:8080/waitlist/'+el.id);*/
+                newLi1.appendChild(newA1);
+                document.getElementById('list2').appendChild(newLi1);
+
+            }
+
         },
         error: function(data) {
             console.error('error', data);
@@ -32,7 +52,7 @@ function InsertChoiseElements() {
 
 
 function InsertEventName(event) {
-
+    if (!event) return console.error('Event ID is undefined', event);
 
     $.ajax({
         url: '/waitlist/getEventNameById/' + event,
@@ -72,7 +92,7 @@ function getListfromDb2(event) {
     });
 }
 
-function setFirstID() {
+/*function setFirstID() {
 
     $.ajax({
         url: '/waitlist/getIdList/',
@@ -93,28 +113,31 @@ function setFirstID() {
             console.error('error', data)
         }
     });
-}
+}*/
 
 function ClearContent() {
     document.getElementById('list').innerHTML = '';
 }
 
 
-function rePaint() {
-    var l_var = localStorage.getItem('curevent');
-    console.log('curevent:' + l_var);
+function rePaint(currentEventId) {
     ClearContent();
-    getListfromDb2(l_var);
+    getListfromDb2(currentEventId);
 }
 
 
 function init() {
+    var currentEventId = /\/(\d+$)/.exec(window.location.href)[1];
+    console.log('curevent:' + currentEventId);
+
     InsertChoiseElements();
-    setFirstID();
-    setInterval(rePaint, 1000);
+    //setFirstID();
+    setInterval(function() {
+      rePaint(currentEventId);
+    }, 1000);
 }
 
-function onClickLeftNext() {
+/*function onClickLeftNext() {
 
     var l_id = localStorage.getItem('curevent');
 
@@ -165,9 +188,9 @@ function onClickRightNext() {
             console.error('error', data);
         }
     });
-}
+}*/
 
 init();
 
-document.getElementById("leftnext").addEventListener("click", onClickLeftNext);
-document.getElementById("rightnext").addEventListener("click", onClickRightNext);
+/*document.getElementById("leftnext").addEventListener("click", onClickLeftNext);
+document.getElementById("rightnext").addEventListener("click", onClickRightNext);*/

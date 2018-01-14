@@ -140,7 +140,7 @@ module.exports = function(db) {
              })
         },
 
-        waitlistPage: function(req, res) {
+        waitlistPage: async function(req, res) {
             res.sendFile('./public/client/templates/index.html', { root: __dirname });
         },
 
@@ -156,7 +156,7 @@ module.exports = function(db) {
         },
 
         getIdList: function(req,res) {
-            var SQL_text = "Select id from Event order by id";
+            var SQL_text = "Select id from Event order by id limit 1";
 
             db.query(SQL_text).then(function(myTableRows) {
                var results = myTableRows[0];
@@ -196,22 +196,19 @@ module.exports = function(db) {
                 res.status(200);
                 res.send({result: results[0]});
             });
-        }
+        },
 
         getEventNames: function(req,res) {
 
-            var SQL_text = "Select id, Event from Event order by id"; 
+            var SQL_text = "Select * from Event order by id"; 
 
              db.query(SQL_text).then(function(myTableRows) {
                var results = myTableRows[0];
-               console.log(results);
+                console.log(results);
                 res.status(200);
                 res.send({result: results});
             });
         }
-
-
-
 
 
     };

@@ -42,7 +42,6 @@ router.get('/admin/EditEvent/:name/:num', isAuthenticated, controllers.EditEvent
 router.get('/admin/DeleteEvent/:num', isAuthenticated, controllers.DeleteEvent);
 router.get('/admin/AddClient/:name/:num', isAuthenticated, controllers.AddNewClient);
 
-router.get('/waitlist', controllers.waitlistPage);
 router.get('/waitlist/getWaitlist/:eventid', controllers.getWaitlist) ; 
 router.get('/waitlist/getIdList', controllers.getIdList); 
 router.get('/waitlist/getPreviousId/:id', controllers.getPreviousId);
@@ -50,6 +49,14 @@ router.get('/waitlist/getNextId/:id', controllers.getNextId);
 router.get('/waitlist/getEventNameById/:id', controllers.getEventNameById);
 router.get('/waitlist/getEventNames', controllers.getEventNames);
 
+router.get('/waitlist', async function(req, res) {
+  var id = await db.query("Select id from Event order by id limit 1")
+    .then(function(myTableRows) {
+      return myTableRows[0][0].id;
+    });
+  return res.redirect('/waitlist/' + id);
+});     
+router.get('/waitlist/:eventid', controllers.waitlistPage);
 /*
  * End Routes
  */
